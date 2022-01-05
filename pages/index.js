@@ -12,14 +12,12 @@ const Index = () => {
   const [countryPicked, setCountryPicked] = useState("");
 
   console.log(
-    `https://disease.sh/v3/covid-19/countries/${countryPicked.toLowerCase()}?strict=true`
+    `https://disease.sh/v3/covid-19/countries/${search ? search.toLowerCase() : countryPicked ? countryPicked.toLowerCase() : search}?strict=true`
   );
-  console.log(data);
-  console.log(chartData);
 
   const getData = () =>
     axios(
-      `https://disease.sh/v3/covid-19/countries/${countryPicked.toLowerCase()}?strict=true`
+      `https://disease.sh/v3/covid-19/countries/${search ? search.toLowerCase() : countryPicked ? countryPicked.toLowerCase() : search}?strict=true`
     )
       .then((response) => {
         setData(response.data);
@@ -30,7 +28,7 @@ const Index = () => {
 
   const getChartData = () =>
     axios(
-      `https://disease.sh/v3/covid-19/historical/${countryPicked.toLowerCase()}?lastdays=30`
+      `https://disease.sh/v3/covid-19/historical/${search ? search.toLowerCase() : countryPicked ? countryPicked.toLowerCase() : search}?lastdays=30`
     )
       .then((response) => {
         setChartData(response.data);
@@ -39,10 +37,8 @@ const Index = () => {
         console.log(error);
       });
 
-  useEffect(() => {
-      getData();
-      getChartData();
-  }, []);
+  console.log(data);
+  console.log(chartData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
