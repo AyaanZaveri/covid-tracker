@@ -114,7 +114,7 @@ const Index = () => {
             </span>
             {data.country ? (
               <Line
-              className="mt-3 p-3 border rounded-lg shadow-xl"
+              className="mt-3 p-3 border rounded-lg shadow-2xl"
                 data={{
                   labels: labels,
                   datasets: [
