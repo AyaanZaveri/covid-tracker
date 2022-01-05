@@ -3,6 +3,7 @@ import Nav from "../components/Nav";
 import axios from "axios";
 import Flag from "react-world-flags";
 import { Line } from "react-chartjs-2";
+import CountryPicker from "../components/CountryPicker";
 
 const Index = () => {
   const [data, setData] = useState([]);
@@ -54,8 +55,6 @@ const Index = () => {
     );
   }
 
-  console.log(dataY);
-
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -63,6 +62,7 @@ const Index = () => {
   return (
     <div className="flex flex-col">
       <Nav search={search} setSearch={setSearch} handleSubmit={handleSubmit} />
+      {!data.country ? <CountryPicker/> : null}
       {data.country ? (
         <div className="flex flex-col gap-y-3 items-start justify-start p-8">
           <div className="flex flex-row space-x-2 justify-start items-baseline">
