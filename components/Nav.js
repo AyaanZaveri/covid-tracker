@@ -6,7 +6,7 @@ const Nav = ({ search, setSearch, handleSubmit }) => {
     <div className="bg-slate-50 flex md:justify-between justify-center flex-row items-center p-5 border-b">
       <div className="flex justify-start items-center">
         <FaCaretUp className="md:block hidden text-2xl text-emerald-500 mr-2" />
-        <span className="md:block hidden text-4xl text-slate-800 font-bold">The Covid Tracker</span>
+        <span className="md:block hidden text-4xl text-slate-800 font-bold hover:underline hover:cursor-pointer" onClick={() => location.reload()}>The Covid Tracker</span>
         <FaCaretDown className="md:block hidden text-2xl text-rose-500 ml-2" />
       </div>
 
