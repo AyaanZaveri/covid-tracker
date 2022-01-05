@@ -6,12 +6,36 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@heroicons/react": "^1.0.5",
+    "chart.js": "3.5.0",
+    "framer-motion": "^5.5.5",
+    "mapbox-gl": "^2.6.1",
+    "maplibre-gl": "^1.15.2",
     "next": "latest",
+    "novelcovid": "^3.0.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-chartjs-2": "3.0.4",
+    "react-countup": "^6.1.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-map-gl": "^6.1.18",
+    "react-mapbox-gl": "^5.1.1",
+    "react-scrollbars-custom": "^4.0.27",
+    "react-spring": "^9.4.0",
+    "react-visibility-sensor": "^5.1.1",
+    "react-world-flags": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
+    "flag-icons": "^6.0.1",
     "postcss": "^8.4.4",
     "tailwindcss": "^3.0.0"
   }
