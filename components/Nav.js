@@ -14,7 +14,7 @@ const Nav = ({ search, setSearch, handleSubmit }) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Country"
+            placeholder="Enter any country..."
             onChange={(e) => setSearch(e.target.value)}
             value={search}
             className="placeholder:text-slate-500 bg-slate-100 text-slate-800 p-2 w-72 border focus:border-slate-500 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring ring-slate-300 active:bg-slate-100 transition"
