@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import axios from "axios";
 import Flag from "react-world-flags";
@@ -9,10 +9,17 @@ const Index = () => {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [search, setSearch] = useState("");
+  const [countryPicked, setCountryPicked] = useState("");
+
+  console.log(
+    `https://disease.sh/v3/covid-19/countries/${countryPicked.toLowerCase()}?strict=true`
+  );
+  console.log(data);
+  console.log(chartData);
 
   const getData = () =>
     axios(
-      `https://disease.sh/v3/covid-19/countries/${search.toLowerCase()}?strict=true`
+      `https://disease.sh/v3/covid-19/countries/${countryPicked.toLowerCase()}?strict=true`
     )
       .then((response) => {
         setData(response.data);
@@ -23,7 +30,7 @@ const Index = () => {
 
   const getChartData = () =>
     axios(
-      `https://disease.sh/v3/covid-19/historical/${search.toLowerCase()}?lastdays=30`
+      `https://disease.sh/v3/covid-19/historical/${countryPicked.toLowerCase()}?lastdays=30`
     )
       .then((response) => {
         setChartData(response.data);
@@ -31,6 +38,11 @@ const Index = () => {
       .catch(function (error) {
         console.log(error);
       });
+
+  useEffect(() => {
+      getData();
+      getChartData();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +74,12 @@ const Index = () => {
   return (
     <div className="flex flex-col">
       <Nav search={search} setSearch={setSearch} handleSubmit={handleSubmit} />
-      {!data.country ? <CountryPicker/> : null}
+      {!data.country ? (
+        <CountryPicker
+          countryPicked={countryPicked}
+          setCountryPicked={setCountryPicked}
+        />
+      ) : null}
       {data.country ? (
         <div className="flex flex-col gap-y-3 items-start justify-start p-8">
           <div className="flex flex-row space-x-2 justify-start items-baseline">
@@ -75,9 +92,9 @@ const Index = () => {
             />
           </div>
           <div className="flex flex-col gap-y-3 mt-2">
-            <span
-              className="inline-flex items-end md:text-6xl text-4xl font-bold text-slate-800"
-            > {numberWithCommas(data.cases)}
+            <span className="inline-flex items-end md:text-6xl text-4xl font-bold text-slate-800">
+              {" "}
+              {numberWithCommas(data.cases)}
               <span className="text-2xl font-semibold text-slate-600 ml-1">
                 cases
               </span>
@@ -114,7 +131,7 @@ const Index = () => {
             </span>
             {data.country ? (
               <Line
-              className="mt-3 p-3 border rounded-lg shadow-2xl"
+                className="mt-3 p-3 border rounded-lg shadow-2xl bg-slate-50 hover:bg-white cursor-pointer transition"
                 data={{
                   labels: labels,
                   datasets: [
