@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 import axios from "axios";
 import Flag from "react-world-flags";
